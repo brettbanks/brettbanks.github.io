@@ -3,25 +3,22 @@
    Minimal, accessible, dependency-free
    =========================== */
 
-// Respect user motion preference
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------- Smooth in-page anchor scroll ---------- */
+/* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const id = link.getAttribute('href');
-    if (!id || id === '#') return;
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
-    // Move focus for a11y
     target.setAttribute('tabindex', '-1');
     target.focus({ preventScroll: true });
   });
 });
 
-/* ---------- Sticky header shadow ---------- */
+/* Sticky header */
 const header = document.querySelector('.header');
 const onScrollShadow = () => {
   if (window.scrollY > 8) header.classList.add('is-scrolled');
@@ -30,10 +27,9 @@ const onScrollShadow = () => {
 document.addEventListener('scroll', onScrollShadow);
 onScrollShadow();
 
-/* ---------- Mobile nav toggle ---------- */
+/* Mobile nav */
 const navToggle = document.querySelector('.nav__toggle');
 const navList = document.getElementById('site-nav');
-
 if (navToggle && navList) {
   const closeMenu = () => {
     navList.classList.remove('is-open');
@@ -46,43 +42,32 @@ if (navToggle && navList) {
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.classList.toggle('no-scroll', open);
   });
-  // Close on link click or Escape
   navList.querySelectorAll('a.nav__link').forEach(a => a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && navList.classList.contains('is-open')) closeMenu();
   });
 }
 
-/* ---------- Scrollspy (active nav link) ---------- */
+/* Scrollspy */
 const sections = [...document.querySelectorAll('main section[id]')];
 const navLinks = [...document.querySelectorAll('.nav__link')];
 const setActiveLink = () => {
   const fromTop = window.scrollY + 90;
   let current = sections[0]?.id || '';
-  for (const sec of sections) {
-    if (sec.offsetTop <= fromTop) current = sec.id;
-  }
-  navLinks.forEach(link => {
-    const active = link.getAttribute('href') === `#${current}`;
-    link.classList.toggle('is-active', active);
-  });
+  for (const sec of sections) if (sec.offsetTop <= fromTop) current = sec.id;
+  navLinks.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${current}`));
 };
 document.addEventListener('scroll', setActiveLink);
 window.addEventListener('load', setActiveLink);
 
-/* ---------- Reveal on scroll ---------- */
+/* Reveal */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('is-visible');
-      io.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
 
-/* ---------- Animated counters ---------- */
+/* Counters */
 const counters = document.querySelectorAll('.count');
 if (counters.length) {
   const co = new IntersectionObserver(entries => {
@@ -90,17 +75,12 @@ if (counters.length) {
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const target = parseInt(el.dataset.target || '0', 10);
-      if (!Number.isFinite(target)) return;
-      const duration = REDUCED ? 0 : 1000; // ms
+      const duration = REDUCED ? 0 : 1000;
       const start = performance.now();
-      const startVal = 0;
-
       const tick = now => {
         const p = Math.min(1, (now - start) / duration);
-        // easeInOutQuad
         const eased = p < 0.5 ? 2*p*p : -1 + (4 - 2*p)*p;
-        const val = Math.round(startVal + (target - startVal) * eased);
-        el.textContent = String(val);
+        el.textContent = String(Math.round(target * eased));
         if (p < 1 && duration) requestAnimationFrame(tick);
         else el.textContent = String(target);
       };
@@ -111,30 +91,31 @@ if (counters.length) {
   counters.forEach(c => co.observe(c));
 }
 
-/* ---------- Gentle hero image parallax ---------- */
+/* Gentle hero badge parallax */
 const heroImg = document.querySelector('.hero__badge-img');
 let ticking = false;
-const parallax = () => {
-  if (REDUCED || !heroImg) return;
-  const y = window.scrollY;
-  const offset = Math.min(16, y * 0.04); // max 16px
-  heroImg.style.transform = `translateY(${offset}px)`;
-};
 document.addEventListener('scroll', () => {
+  if (REDUCED || !heroImg) return;
   if (!ticking) {
-    requestAnimationFrame(() => { parallax(); ticking = false; });
+    requestAnimationFrame(() => {
+      const offset = Math.min(16, window.scrollY * 0.04);
+      heroImg.style.transform = `translateY(${offset}px)`;
+      ticking = false;
+    });
     ticking = true;
   }
 });
 
-/* ---------- Preload hero background for smoother paint ---------- */
-(() => {
+/* ---------- FORCE BACKGROUNDS FROM DATA ATTRS ---------- */
+window.addEventListener('DOMContentLoaded', () => {
+  // Hero background
   const hero = document.querySelector('.hero--image');
-  if (!hero) return;
-  const url = getComputedStyle(hero).backgroundImage
-    .replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-  if (!url || url === 'none') return;
-  const img = new Image();
-  img.src = url;
-  img.onload = () => hero.classList.add('ready');
-})();
+  const heroSrc = hero?.getAttribute('data-hero');
+  if (hero && heroSrc) hero.style.backgroundImage = `url('${heroSrc}')`;
+
+  // Project banners
+  document.querySelectorAll('.card__banner').forEach(b => {
+    const src = b.getAttribute('data-banner');
+    if (src) b.style.backgroundImage = `url('${src}')`;
+  });
+});
