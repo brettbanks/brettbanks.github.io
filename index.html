@@ -14,26 +14,39 @@
 </head>
 <body>
   <!-- ==================== HEADER ==================== -->
-  <header class="header">
-    <nav class="nav container">
-      <a class="nav__brand" href="#home">
-        <span class="nav__logo-circle">B</span>
-        <span class="nav__logo-name">Brett Banks</span>
-      </a>
+<header class="header">
+  <nav class="nav container">
+    <a class="nav__brand" href="#home" aria-label="Go to top">
+      <span class="nav__logo-circle">B</span>
+      <span class="nav__logo-name">Brett Banks</span>
+    </a>
 
-      <ul class="nav__list">
-        <li><a class="nav__link" href="#home">Home</a></li>
-        <li><a class="nav__link" href="#about">About</a></li>
-        <li><a class="nav__link" href="#services">Services</a></li>
-        <li><a class="nav__link" href="#projects">Projects</a></li>
-        <li><a class="nav__link" href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Mobile toggle button -->
+    <button class="nav__toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+      <span class="nav__bar"></span>
+      <span class="nav__bar"></span>
+      <span class="nav__bar"></span>
+    </button>
+
+    <!-- Nav links -->
+    <ul id="site-nav" class="nav__list">
+      <li><a class="nav__link" href="#home">Home</a></li>
+      <li><a class="nav__link" href="#about">About</a></li>
+      <li><a class="nav__link" href="#services">Services</a></li>
+      <li><a class="nav__link" href="#projects">Projects</a></li>
+      <li><a class="nav__link" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main>
     <!-- ==================== HERO ==================== -->
-    <section id="home" class="section hero">
+<section id="services" class="section section--alt reveal">…</section>
+<section id="projects" class="section reveal">…</section>
+<article class="card reveal">…</article>
+  
+
+  <section id="home" class="section hero">
       <div class="container hero__container">
         <div class="hero__content">
           <h1 class="hero__title">Brett Banks</h1>
@@ -65,14 +78,33 @@
         </div>
       </div>
     </section>
+<ul class="stats reveal" aria-label="Quick stats">
+  <li>
+    <strong class="count" data-target="3">0</strong>
+    <span>Enterprise Labs</span>
+  </li>
+  <li>
+    <strong class="count" data-target="3">0</strong>
+    <span>CompTIA Certs</span>
+  </li>
+  <li>
+    <strong class="count" data-target="1">0</strong>
+    <span>Hiring Our Heroes Fellow</span>
+  </li>
+</ul>
 
     <!-- ==================== ABOUT ==================== -->
-    <section id="about" class="section">
+<section id="services" class="section section--alt reveal">…</section>
+<section id="projects" class="section reveal">…</section>
+<article class="card reveal">…</article>
+  
+
+  <section id="about" class="section">
       <div class="container">
         <h2 class="section__title">About</h2>
         <p class="text-lg">
           Former industrial engineer turned <strong>IT & Cybersecurity professional</strong>, specializing in enterprise
-          applications, SOC workflows, and security automation. I’m completing a <strong>B.S. in IT at WGU (Dec 2025)</strong>
+          applications, SOC workflows, and security automation. </strong>
           and participate in <strong>Hiring Our Heroes</strong>. My focus: building defensible systems, automating
           incident response, and delivering executive-ready reports.
         </p>
@@ -104,7 +136,12 @@
     </section>
 
     <!-- ==================== SERVICES ==================== -->
-    <section id="services" class="section section--alt">
+<section id="services" class="section section--alt reveal">…</section>
+<section id="projects" class="section reveal">…</section>
+<article class="card reveal">…</article>
+  
+
+  <section id="services" class="section section--alt">
       <div class="container">
         <h2 class="section__title">Services</h2>
 
