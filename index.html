@@ -11,45 +11,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
 
-<script src="assets/js/app.js"></script>
+  <!-- (Optional) Social preview -->
+  <meta property="og:title" content="Brett Banks | Lab Engineer & Security Consultant">
+  <meta property="og:description" content="Enterprise lab engineering, SOC workflows, and security automation.">
+  <meta property="og:image" content="https://brettbanks.github.io/assets/img/profile.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
 
 <body>
   <!-- ==================== HEADER ==================== -->
-<header class="header">
-  <nav class="nav container">
-    <a class="nav__brand" href="#home" aria-label="Go to top">
-      <span class="nav__logo-circle">B</span>
-      <span class="nav__logo-name">Brett Banks</span>
-    </a>
+  <header class="header">
+    <nav class="nav container">
+      <a class="nav__brand" href="#home" aria-label="Go to top">
+        <span class="nav__logo-circle">B</span>
+        <span class="nav__logo-name">Brett Banks</span>
+      </a>
 
-    <!-- Mobile toggle button -->
-    <button class="nav__toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
-      <span class="nav__bar"></span>
-      <span class="nav__bar"></span>
-      <span class="nav__bar"></span>
-    </button>
+      <!-- Mobile toggle button -->
+      <button class="nav__toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </button>
 
-    <!-- Nav links -->
-    <ul id="site-nav" class="nav__list">
-      <li><a class="nav__link" href="#home">Home</a></li>
-      <li><a class="nav__link" href="#about">About</a></li>
-      <li><a class="nav__link" href="#services">Services</a></li>
-      <li><a class="nav__link" href="#projects">Projects</a></li>
-      <li><a class="nav__link" href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+      <!-- Nav links -->
+      <ul id="site-nav" class="nav__list">
+        <li><a class="nav__link" href="#home">Home</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#services">Services</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main>
     <!-- ==================== HERO ==================== -->
-<section id="services" class="section section--alt reveal">…</section>
-<section id="projects" class="section reveal">…</section>
-<article class="card reveal">…</article>
-  
-
-  <section id="home" class="section hero">
+    <section id="home" class="section hero">
       <div class="container hero__container">
         <div class="hero__content">
           <h1 class="hero__title">Brett Banks</h1>
@@ -62,7 +62,7 @@
             <a class="btn btn--ghost" href="#contact">Contact</a>
           </div>
 
-          <div class="socials">
+          <div class="socials" aria-label="Social links">
             <a class="socials__link" href="https://linkedin.com/in/brettbanks1" aria-label="LinkedIn">
               <i class="ri-linkedin-box-fill"></i>
             </a>
@@ -73,41 +73,38 @@
               <i class="ri-mail-fill"></i>
             </a>
           </div>
+
+          <!-- Stats strip -->
+          <ul class="stats reveal" aria-label="Quick stats">
+            <li>
+              <strong class="count" data-target="3">0</strong>
+              <span>Enterprise Labs</span>
+            </li>
+            <li>
+              <strong class="count" data-target="3">0</strong>
+              <span>CompTIA Certs</span>
+            </li>
+            <li>
+              <strong class="count" data-target="1">0</strong>
+              <span>Hiring Our Heroes Fellow</span>
+            </li>
+          </ul>
         </div>
 
         <div class="hero__image">
           <!-- Replace with your headshot. Upload to assets/img/profile.jpg -->
-          <img src="assets/img/profile.jpg" alt="Portrait of Brett Banks" class="hero__img" />
+          <img src="assets/img/profile.jpg" alt="Portrait of Brett Banks" class="hero__img" loading="lazy" />
         </div>
       </div>
     </section>
-<ul class="stats reveal" aria-label="Quick stats">
-  <li>
-    <strong class="count" data-target="3">0</strong>
-    <span>Enterprise Labs</span>
-  </li>
-  <li>
-    <strong class="count" data-target="3">0</strong>
-    <span>CompTIA Certs</span>
-  </li>
-  <li>
-    <strong class="count" data-target="1">0</strong>
-    <span>Hiring Our Heroes Fellow</span>
-  </li>
-</ul>
 
     <!-- ==================== ABOUT ==================== -->
-<section id="services" class="section section--alt reveal">…</section>
-<section id="projects" class="section reveal">…</section>
-<article class="card reveal">…</article>
-  
-
-  <section id="about" class="section">
+    <section id="about" class="section reveal">
       <div class="container">
         <h2 class="section__title">About</h2>
         <p class="text-lg">
           Former industrial engineer turned <strong>IT & Cybersecurity professional</strong>, specializing in enterprise
-          applications, SOC workflows, and security automation. </strong>
+          applications, SOC workflows, and security automation. I’m completing a <strong>B.S. in IT at WGU (Dec 2025)</strong>
           and participate in <strong>Hiring Our Heroes</strong>. My focus: building defensible systems, automating
           incident response, and delivering executive-ready reports.
         </p>
@@ -139,32 +136,28 @@
     </section>
 
     <!-- ==================== SERVICES ==================== -->
-<section id="services" class="section section--alt reveal">…</section>
-<section id="projects" class="section reveal">…</section>
-<article class="card reveal">…</article>
-  
-
-  <section id="services" class="section section--alt">
+    <section id="services" class="section section--alt reveal">
       <div class="container">
         <h2 class="section__title">Services</h2>
+        <p class="section__intro">Focused on enterprise labs, operational security, and automation that reduces manual toil.</p>
 
         <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Enterprise Lab Engineering</h3>
+          <article class="card reveal">
+            <h3 class="card__title"><i class="ri-server-line"></i> Enterprise Lab Engineering</h3>
             <p class="card__desc">
               Multi-VM environments with pfSense, Active Directory, and SOC tooling to replicate real-world infrastructure.
             </p>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">Security Consulting</h3>
+          <article class="card reveal">
+            <h3 class="card__title"><i class="ri-shield-check-line"></i> Security Consulting</h3>
             <p class="card__desc">
               SOC workflow simulations, HIPAA-aware risk scans, and compliance-focused reporting aligned to business needs.
             </p>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">Automation & Scripting</h3>
+          <article class="card reveal">
+            <h3 class="card__title"><i class="ri-terminal-box-line"></i> Automation & Scripting</h3>
             <p class="card__desc">
               Python & PowerShell automation to reduce manual log review and access provisioning effort.
             </p>
@@ -174,37 +167,41 @@
     </section>
 
     <!-- ==================== PROJECTS ==================== -->
-    <section id="projects" class="section">
+    <section id="projects" class="section reveal">
       <div class="container">
         <h2 class="section__title">Featured Projects</h2>
 
         <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Enterprise Apps Lab</h3>
+          <article class="card reveal">
+            <div class="card__banner" role="img" aria-label="Enterprise Apps Lab banner"></div>
+            <h3 class="card__title"><i class="ri-apps-2-line"></i> Enterprise Apps Lab</h3>
             <p class="card__desc">
               Multi-VM stack with pfSense + AD + Jira; simulated RBAC, NAT/firewall policies, and ticket-driven change management.
             </p>
             <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">SOC Workflow Simulation</h3>
+          <article class="card reveal">
+            <div class="card__banner" role="img" aria-label="SOC Workflow banner"></div>
+            <h3 class="card__title"><i class="ri-radar-line"></i> SOC Workflow Simulation</h3>
             <p class="card__desc">
               End-to-end SOC pipeline with Sysmon + Zeek logs, Splunk detections, and triage mapped to MITRE ATT&CK.
             </p>
             <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">Wireshark Case Study</h3>
+          <article class="card reveal">
+            <div class="card__banner" role="img" aria-label="Wireshark Case Study banner"></div>
+            <h3 class="card__title"><i class="ri-bug-line"></i> Wireshark Case Study</h3>
             <p class="card__desc">
               Professional incident response report analyzing malicious packet captures and DNS exfil attempts.
             </p>
             <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
           </article>
 
-          <article class="card">
-            <h3 class="card__title">Python Log Parser</h3>
+          <article class="card reveal">
+            <div class="card__banner" role="img" aria-label="Python Log Parser banner"></div>
+            <h3 class="card__title"><i class="ri-code-s-slash-line"></i> Python Log Parser</h3>
             <p class="card__desc">
               Custom log parsing utility automating IOC extraction and reducing manual workload.
             </p>
@@ -215,16 +212,30 @@
     </section>
 
     <!-- ==================== CONTACT ==================== -->
-    <section id="contact" class="section section--alt">
+    <section id="contact" class="section section--alt reveal">
       <div class="container">
         <h2 class="section__title">Contact</h2>
         <p class="text-lg">Interested in exploring how I can add value to your team? Reach me directly:</p>
 
         <ul class="contact__list">
-          <li><i class="ri-mail-line"></i> <a href="mailto:brettcbanks@proton.me">brettcbanks@proton.me</a></li>
-          <li><i class="ri-linkedin-box-line"></i> <a href="https://linkedin.com/in/brettbanks1">linkedin.com/in/brettbanks1</a></li>
-          <li><i class="ri-github-line"></i> <a href="https://github.com/brettbanks">github.com/brettbanks</a></li>
+          <li><i class="ri-mail-line" aria-hidden="true"></i> <a href="mailto:brettcbanks@proton.me">brettcbanks@proton.me</a></li>
+          <li><i class="ri-linkedin-box-line" aria-hidden="true"></i> <a href="https://linkedin.com/in/brettbanks1">linkedin.com/in/brettbanks1</a></li>
+          <li><i class="ri-github-line" aria-hidden="true"></i> <a href="https://github.com/brettbanks">github.com/brettbanks</a></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ==================== CTA BAND ==================== -->
+    <section class="section section--alt cta reveal" style="padding:40px 0">
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <h3 style="margin:0 0 6px; font-size:1.3rem">Open to Application Admin & Security Roles</h3>
+          <p style="margin:0; color:#374151">Available for full-time • Remote-ready • Night/Weekend maintenance OK</p>
+        </div>
+        <div>
+          <a class="btn btn--primary" href="mailto:brettcbanks@proton.me">Email Me</a>
+          <a class="btn" href="https://linkedin.com/in/brettbanks1">Connect on LinkedIn</a>
+        </div>
       </div>
     </section>
   </main>
@@ -235,5 +246,8 @@
       <p>© 2025 Brett Banks. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- JS at the end so DOM is ready -->
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
