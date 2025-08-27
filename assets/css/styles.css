@@ -78,6 +78,10 @@ img{ max-width:100%; display:block }
   transition: box-shadow .2s ease;
 }
 .header.is-scrolled{ box-shadow: var(--shadow-s) }
+/* Blur fallback if unsupported */
+@supports not ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))){
+  .header{ background: #0f141a; }
+}
 
 .nav{
   display:flex; align-items:center; justify-content:space-between; padding:14px 0;
@@ -129,7 +133,7 @@ img{ max-width:100%; display:block }
   color:#0b1320; border-color: transparent;
   box-shadow: 0 10px 26px rgba(68,124,255,.28);
 }
-.btn--primary:hover{ filter: brightness(1.05) }
+.btn--primary:hover{ filter: brightness(1.08); }
 .btn--ghost{ background: transparent }
 .btn--ghost:hover{ border-color: var(--link); color: var(--link) }
 .btn--mini{
@@ -138,6 +142,13 @@ img{ max-width:100%; display:block }
   color:#0b1320; border:0;
 }
 .btn:active, .btn--mini:active{ transform: translateY(1px) }
+
+/* Accessible focus styles */
+:where(a, button, .btn, .nav__link):focus-visible{
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
 
 /* ---- Hero (with background image & overlay) ---- */
 .hero{
@@ -204,9 +215,7 @@ img{ max-width:100%; display:block }
 }
 
 /* ---- Section backgrounds (subtle image layer) ---- */
-.section--bg{
-  position: relative; isolation: isolate;
-}
+.section--bg{ position: relative; isolation: isolate; }
 .section--bg::before{
   content:""; position:absolute; inset:0; z-index:-1;
   background-position:center; background-size: cover;
@@ -244,7 +253,7 @@ img{ max-width:100%; display:block }
 
 /* Project top banner (correct layering) */
 .card__banner{
-  background-color: var(--surface-2);               /* base color stays even if images fail */
+  background-color: var(--surface-2);
   background-image:
     var(--banner),                                   /* project-specific photo from inline style */
     radial-gradient(ellipse at top left, rgba(90,162,255,.35), transparent 55%),
@@ -256,6 +265,11 @@ img{ max-width:100%; display:block }
   margin-bottom: 14px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-s);
+}
+/* Cards keyboard focus */
+.card:focus-within{
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
 }
 
 /* ---- Contact ---- */
@@ -290,3 +304,19 @@ img{ max-width:100%; display:block }
 
 /* ---- Section separators for rhythm ---- */
 .section + .section{ border-top: 1px solid var(--line) }
+
+/* ---- Small-screen rhythm & readability ---- */
+@media (max-width:520px){
+  .section{ padding:64px 0 }
+  .hero__title{ font-size: clamp(1.9rem, 6vw, 2.6rem) }
+  .hero__desc{ font-size:1rem }
+  .btn{ padding:10px 16px }
+}
+
+/* ---- Underline reveal for body links (non-nav, non-buttons) ---- */
+a:not(.btn):not(.nav__link){
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size .2s ease;
+}
+a:not(.btn):not(.nav__link):hover{ background-size: 100% 1px; }
