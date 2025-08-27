@@ -1,19 +1,27 @@
+/* ===========================
+   Brett Banks — Site Interactions
+   Minimal, accessible, dependency-free
+   =========================== */
+
 // Respect user motion preference
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ===== Smooth in-page anchor scroll ===== */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
+/* ---------- Smooth in-page anchor scroll ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href');
     if (!id || id === '#') return;
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' });
+    // Move focus for a11y
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
   });
 });
 
-/* ===== Header shadow on scroll ===== */
+/* ---------- Sticky header shadow ---------- */
 const header = document.querySelector('.header');
 const onScrollShadow = () => {
   if (window.scrollY > 8) header.classList.add('is-scrolled');
@@ -22,43 +30,47 @@ const onScrollShadow = () => {
 document.addEventListener('scroll', onScrollShadow);
 onScrollShadow();
 
-/* ===== Mobile nav toggle ===== */
-const toggle = document.querySelector('.nav__toggle');
+/* ---------- Mobile nav toggle ---------- */
+const navToggle = document.querySelector('.nav__toggle');
 const navList = document.getElementById('site-nav');
-if (toggle && navList) {
-  toggle.addEventListener('click', () => {
+
+if (navToggle && navList) {
+  const closeMenu = () => {
+    navList.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('no-scroll');
+    navToggle.focus();
+  };
+  navToggle.addEventListener('click', () => {
     const open = navList.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     document.body.classList.toggle('no-scroll', open);
   });
-  // Close menu when clicking a link
-  navList.querySelectorAll('a.nav__link').forEach(link => {
-    link.addEventListener('click', () => {
-      navList.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('no-scroll');
-    });
+  // Close on link click or Escape
+  navList.querySelectorAll('a.nav__link').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navList.classList.contains('is-open')) closeMenu();
   });
 }
 
-/* ===== Active nav highlighting (scrollspy) ===== */
+/* ---------- Scrollspy (active nav link) ---------- */
 const sections = [...document.querySelectorAll('main section[id]')];
 const navLinks = [...document.querySelectorAll('.nav__link')];
 const setActiveLink = () => {
-  const fromTop = window.scrollY + 90; // offset near header
+  const fromTop = window.scrollY + 90;
   let current = sections[0]?.id || '';
   for (const sec of sections) {
     if (sec.offsetTop <= fromTop) current = sec.id;
   }
   navLinks.forEach(link => {
-    const isActive = link.getAttribute('href') === `#${current}`;
-    link.classList.toggle('is-active', isActive);
+    const active = link.getAttribute('href') === `#${current}`;
+    link.classList.toggle('is-active', active);
   });
 };
 document.addEventListener('scroll', setActiveLink);
 window.addEventListener('load', setActiveLink);
 
-/* ===== Scroll reveal with IntersectionObserver ===== */
+/* ---------- Reveal on scroll ---------- */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -70,7 +82,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
 
-/* ===== Animated counters for .count elements ===== */
+/* ---------- Animated counters ---------- */
 const counters = document.querySelectorAll('.count');
 if (counters.length) {
   const co = new IntersectionObserver(entries => {
@@ -79,7 +91,7 @@ if (counters.length) {
       const el = entry.target;
       const target = parseInt(el.dataset.target || '0', 10);
       if (!Number.isFinite(target)) return;
-      const duration = REDUCED ? 0 : 900; // ms
+      const duration = REDUCED ? 0 : 1000; // ms
       const start = performance.now();
       const startVal = 0;
 
@@ -88,9 +100,9 @@ if (counters.length) {
         // easeInOutQuad
         const eased = p < 0.5 ? 2*p*p : -1 + (4 - 2*p)*p;
         const val = Math.round(startVal + (target - startVal) * eased);
-        el.textContent = val.toString();
+        el.textContent = String(val);
         if (p < 1 && duration) requestAnimationFrame(tick);
-        else el.textContent = target.toString();
+        else el.textContent = String(target);
       };
       requestAnimationFrame(tick);
       co.unobserve(el);
@@ -99,21 +111,31 @@ if (counters.length) {
   counters.forEach(c => co.observe(c));
 }
 
-/* ===== Gentle hero parallax (image rises slightly) ===== */
-const heroImg = document.querySelector('.hero__img');
+/* ---------- Gentle hero image parallax ---------- */
+const heroImg = document.querySelector('.hero__badge-img');
 let ticking = false;
 const parallax = () => {
   if (REDUCED || !heroImg) return;
   const y = window.scrollY;
-  const offset = Math.min(20, y * 0.05); // max 20px
+  const offset = Math.min(16, y * 0.04); // max 16px
   heroImg.style.transform = `translateY(${offset}px)`;
 };
 document.addEventListener('scroll', () => {
   if (!ticking) {
-    window.requestAnimationFrame(() => {
-      parallax();
-      ticking = false;
-    });
+    requestAnimationFrame(() => { parallax(); ticking = false; });
     ticking = true;
   }
 });
+
+/* ---------- Preload heavy background for smoother hero ---------- */
+(() => {
+  const hero = document.querySelector('.hero--image');
+  if (!hero) return;
+  const url = getComputedStyle(hero).backgroundImage
+    .replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+  if (!url || url === 'none') return;
+  const img = new Image();
+  img.src = url;
+  // Add a class when ready to fade in—CSS can use .hero--image.ready if desired
+  img.onload = () => hero.classList.add('ready');
+})();
