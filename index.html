@@ -56,7 +56,7 @@
     <!-- ==================== HERO (Dark with background image) ==================== -->
     <!-- Uses CSS .hero--image background: assets/img/project-wireshark.jpg -->
     <!-- Headshot: assets/img/profile.jpg (rendered grayscale by CSS) -->
-    <section id="home" class="section hero hero--image">
+    <section id="home" class="section hero hero--image" data-hero="assets/img/project-wireshark.jpg">
       <div class="hero__overlay"></div>
       <div class="container hero__container">
         <div class="hero__content reveal">
@@ -145,7 +145,7 @@
 
         <div class="cards">
           <article class="card reveal" tabindex="0">
-            <div class="card__banner" style="--banner:url('assets/img/project-apps-lab.jpg')" role="img" aria-label="Enterprise Apps Lab banner"></div>
+            <div class="card__banner" data-banner="assets/img/project-apps-lab.jpg" role="img" aria-label="Enterprise Apps Lab banner"></div>
             <h3 class="card__title"><i class="ri-apps-2-line"></i> Enterprise Apps Lab</h3>
             <p class="card__desc">
               Multi-VM stack with pfSense + AD + Jira; simulated RBAC, NAT/firewall policies, and ticket-driven change management.
@@ -154,7 +154,7 @@
           </article>
 
           <article class="card reveal" tabindex="0">
-            <div class="card__banner" style="--banner:url('assets/img/project-soc.jpg')" role="img" aria-label="SOC Workflow banner"></div>
+            <div class="card__banner" data-banner="assets/img/project-soc.jpg" role="img" aria-label="SOC Workflow banner"></div>
             <h3 class="card__title"><i class="ri-radar-line"></i> SOC Workflow Simulation</h3>
             <p class="card__desc">
               End-to-end SOC pipeline with Sysmon + Zeek logs, Splunk detections, and triage mapped to MITRE ATT&CK.
@@ -163,7 +163,7 @@
           </article>
 
           <article class="card reveal" tabindex="0">
-            <div class="card__banner" style="--banner:url('assets/img/project-wireshark.jpg')" role="img" aria-label="Wireshark Case Study banner"></div>
+            <div class="card__banner" data-banner="assets/img/project-wireshark.jpg" role="img" aria-label="Wireshark Case Study banner"></div>
             <h3 class="card__title"><i class="ri-bug-line"></i> Wireshark Case Study</h3>
             <p class="card__desc">
               Professional incident response report analyzing malicious packet captures and DNS exfil attempts.
