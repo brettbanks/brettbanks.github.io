@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brett Banks | Lab Engineer & Security Consultant</title>
 
-  <!-- Icons -->
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Icons & Font -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="anonymous">
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- Social preview -->
+  <!-- SEO / Social -->
+  <meta name="description" content="Brett Banks — Lab Engineer & Security Consultant. Enterprise lab engineering, SOC workflows, and security automation.">
   <meta property="og:title" content="Brett Banks | Lab Engineer & Security Consultant">
   <meta property="og:description" content="Enterprise lab engineering, SOC workflows, and security automation.">
   <meta property="og:image" content="https://brettbanks.github.io/assets/img/project-wireshark.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0d1117">
 </head>
 
 <body>
@@ -47,9 +53,9 @@
   </header>
 
   <main>
-    <!-- ==================== HERO (DARK with background image) ==================== -->
-    <!-- Upload: assets/img/hero-bg.jpg  (use: taylor-vick-M5tzZtFCOfs-unsplash.jpg) -->
-    <!-- Upload: assets/img/profile-bw.jpg (your black & white headshot, no border) -->
+    <!-- ==================== HERO (Dark with background image) ==================== -->
+    <!-- Uses CSS .hero--image background: assets/img/project-wireshark.jpg -->
+    <!-- Headshot: assets/img/profile.jpg (rendered grayscale by CSS) -->
     <section id="home" class="section hero hero--image">
       <div class="hero__overlay"></div>
       <div class="container hero__container">
@@ -93,34 +99,35 @@
         </div>
 
         <!-- Headshot badge (small, b/w, corner) -->
-<div class="hero__badge">
-  <img src="assets/img/profile.jpg" alt="Portrait of Brett Banks" class="hero__badge-img" loading="lazy" />
-</div>
+        <div class="hero__badge" aria-hidden="true">
+          <img src="assets/img/profile.jpg" alt="Portrait of Brett Banks" class="hero__badge-img" loading="lazy" />
+        </div>
+      </div>
     </section>
 
-    <!-- ==================== SERVICES (dark surface + subtle bg image) ==================== -->
-    <!-- Optional section background image (very subtle): assets/img/services-bg.jpg  (use birgit-steven-lahno-le_ugaWOFvw-unsplash.jpg) -->
+    <!-- ==================== SERVICES ==================== -->
+    <!-- Subtle section background via CSS: .services-bg::before uses assets/img/services-bg.jpg -->
     <section id="services" class="section section--alt reveal section--bg services-bg">
       <div class="container">
         <h2 class="section__title">Services</h2>
         <p class="section__intro">Enterprise labs, operational security, and automation that reduces manual toil.</p>
 
         <div class="cards">
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <h3 class="card__title"><i class="ri-server-line"></i> Enterprise Lab Engineering</h3>
             <p class="card__desc">
               Multi-VM environments with pfSense, Active Directory, and SOC tooling to replicate real-world infrastructure.
             </p>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <h3 class="card__title"><i class="ri-shield-check-line"></i> Security Consulting</h3>
             <p class="card__desc">
               SOC workflow simulations, HIPAA-aware risk scans, and compliance-focused reporting aligned to business needs.
             </p>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <h3 class="card__title"><i class="ri-terminal-box-line"></i> Automation & Scripting</h3>
             <p class="card__desc">
               Python & PowerShell automation to reduce manual log review and access provisioning effort.
@@ -130,53 +137,47 @@
       </div>
     </section>
 
-    <!-- ==================== PROJECTS (each card with a banner image) ==================== -->
-    <!-- Banner image mapping:
-         Enterprise Apps Lab     -> assets/img/project-apps-lab.jpg    (taylor-vick-M5tzZtFCOfs-unsplash.jpg if not used in hero; otherwise use igor-saikin)
-         SOC Workflow Simulation -> assets/img/project-soc.jpg         (markus-spiske-NsyU41QcsxM-unsplash.jpg)
-         Wireshark Case Study    -> assets/img/project-wireshark.jpg   (igor-saikin-E840iJGN8_k-unsplash.jpg)
-         Python Log Parser       -> assets/img/project-automation.jpg  (yuriy-vertikov-czES9OmWmHU-unsplash.jpg)
-         Extra/alt textures      -> assets/img/project-hardware.jpg    (rick-rothenberg-0-haYLgzeeQ-unsplash.jpg)
-    -->
+    <!-- ==================== PROJECTS ==================== -->
+    <!-- Faint section background via CSS: .projects-bg::before uses assets/img/project-hardware.jpg -->
     <section id="projects" class="section reveal section--bg projects-bg">
       <div class="container">
         <h2 class="section__title">Featured Projects</h2>
 
         <div class="cards">
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <div class="card__banner" style="--banner:url('assets/img/project-apps-lab.jpg')" role="img" aria-label="Enterprise Apps Lab banner"></div>
             <h3 class="card__title"><i class="ri-apps-2-line"></i> Enterprise Apps Lab</h3>
             <p class="card__desc">
               Multi-VM stack with pfSense + AD + Jira; simulated RBAC, NAT/firewall policies, and ticket-driven change management.
             </p>
-            <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
+            <a class="btn btn--mini" href="https://github.com/brettbanks">View Project on GitHub</a>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <div class="card__banner" style="--banner:url('assets/img/project-soc.jpg')" role="img" aria-label="SOC Workflow banner"></div>
             <h3 class="card__title"><i class="ri-radar-line"></i> SOC Workflow Simulation</h3>
             <p class="card__desc">
               End-to-end SOC pipeline with Sysmon + Zeek logs, Splunk detections, and triage mapped to MITRE ATT&CK.
             </p>
-            <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
+            <a class="btn btn--mini" href="https://github.com/brettbanks">View Project on GitHub</a>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <div class="card__banner" style="--banner:url('assets/img/project-wireshark.jpg')" role="img" aria-label="Wireshark Case Study banner"></div>
             <h3 class="card__title"><i class="ri-bug-line"></i> Wireshark Case Study</h3>
             <p class="card__desc">
               Professional incident response report analyzing malicious packet captures and DNS exfil attempts.
             </p>
-            <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
+            <a class="btn btn--mini" href="https://github.com/brettbanks">View Project on GitHub</a>
           </article>
 
-          <article class="card reveal">
+          <article class="card reveal" tabindex="0">
             <div class="card__banner" style="--banner:url('assets/img/project-automation.jpg')" role="img" aria-label="Python Log Parser banner"></div>
             <h3 class="card__title"><i class="ri-code-s-slash-line"></i> Python Log Parser</h3>
             <p class="card__desc">
               Custom log parsing utility automating IOC extraction and reducing manual workload.
             </p>
-            <a class="btn btn--mini" href="https://github.com/brettbanks">View</a>
+            <a class="btn btn--mini" href="https://github.com/brettbanks">View Project on GitHub</a>
           </article>
         </div>
       </div>
