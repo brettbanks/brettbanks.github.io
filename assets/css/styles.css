@@ -106,3 +106,53 @@ body{
   .hero__image{order:-1}
   .nav__list{display:none} /* simple mobile collapse */
 }
+
+/* ===== Mobile nav toggle ===== */
+.nav__toggle{
+  display:none; background:none; border:0; cursor:pointer; padding:8px;
+}
+.nav__bar{
+  display:block; width:22px; height:2px; background:var(--text); margin:4px 0; transition:transform .2s ease
+}
+/* Mobile state */
+@media (max-width:860px){
+  .nav__toggle{ display:block }
+  .nav__list{
+    position: fixed; inset: 56px 0 0 0;
+    background: var(--surface);
+    transform: translateY(-100%);
+    transition: transform .2s ease;
+    display: flex; flex-direction: column; gap: 0;
+    border-top: 1px solid var(--border);
+    padding: 8px 0;
+  }
+  .nav__list.is-open{ transform: translateY(0) }
+  .nav__list li{ border-bottom: 1px solid var(--border) }
+  .nav__link{ display:block; padding:14px 5%; }
+  body.no-scroll{ overflow: hidden }
+}
+
+/* Active link style */
+.nav__link.is-active{
+  color: var(--link);
+}
+
+/* Header shadow (already in your CSS, ensure this exists) */
+.header{ transition: box-shadow .2s ease }
+.header.is-scrolled{ box-shadow: 0 6px 20px rgba(0,0,0,.06) }
+
+/* Stats strip */
+.stats{
+  display:flex; gap:28px; margin:16px 0 0; padding:0; list-style:none; color:#374151
+}
+.stats li{ display:flex; flex-direction:column; align-items:flex-start }
+.stats strong{ font-size:1.25rem; color:var(--text); line-height:1 }
+.stats span{ font-size:.95rem; color:#6b7280 }
+@media (max-width:860px){ .stats{ flex-wrap:wrap } }
+
+/* Reveal states (polish) */
+.reveal{ opacity:0; transform: translateY(14px); transition: opacity .55s cubic-bezier(.22,.61,.36,1), transform .55s cubic-bezier(.22,.61,.36,1) }
+.reveal.is-visible{ opacity:1; transform: none }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ transition: none !important }
+}
