@@ -242,15 +242,18 @@ img{ max-width:100%; display:block }
 .card__title i{ color: var(--link) }
 .card__desc{ color: var(--muted); margin: 0 }
 
-/* Project top banner */
+/* Project top banner (correct layering) */
 .card__banner{
-  height: 140px; border-radius: 12px; margin-bottom: 14px;
-  background: radial-gradient(ellipse at top left, rgba(90,162,255,.35), transparent 55%),
-              radial-gradient(ellipse at bottom right, rgba(32,64,128,.45), transparent 50%),
-              var(--surface-2);
-  background-image: var(--banner), radial-gradient(ellipse at top left, rgba(90,162,255,.35), transparent 55%), radial-gradient(ellipse at bottom right, rgba(32,64,128,.45), transparent 50%);
+  background-color: var(--surface-2);               /* base color stays even if images fail */
+  background-image:
+    var(--banner),                                   /* project-specific photo from inline style */
+    radial-gradient(ellipse at top left, rgba(90,162,255,.35), transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(32,64,128,.45), transparent 50%);
   background-size: cover, auto, auto;
-  background-position: center;
+  background-position: center, top left, bottom right;
+  height: 140px;
+  border-radius: 12px;
+  margin-bottom: 14px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-s);
 }
