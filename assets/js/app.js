@@ -1,7 +1,7 @@
-// ===== Respect user motion preference =====
+// Respect user motion preference
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ===== Smooth in-page anchor scroll =====
+/* ===== Smooth in-page anchor scroll ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
@@ -13,7 +13,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ===== Header shadow on scroll =====
+/* ===== Header shadow on scroll ===== */
 const header = document.querySelector('.header');
 const onScrollShadow = () => {
   if (window.scrollY > 8) header.classList.add('is-scrolled');
@@ -22,7 +22,7 @@ const onScrollShadow = () => {
 document.addEventListener('scroll', onScrollShadow);
 onScrollShadow();
 
-// ===== Mobile nav toggle =====
+/* ===== Mobile nav toggle ===== */
 const toggle = document.querySelector('.nav__toggle');
 const navList = document.getElementById('site-nav');
 if (toggle && navList) {
@@ -41,7 +41,7 @@ if (toggle && navList) {
   });
 }
 
-// ===== Active nav highlighting (scrollspy) =====
+/* ===== Active nav highlighting (scrollspy) ===== */
 const sections = [...document.querySelectorAll('main section[id]')];
 const navLinks = [...document.querySelectorAll('.nav__link')];
 const setActiveLink = () => {
@@ -58,7 +58,7 @@ const setActiveLink = () => {
 document.addEventListener('scroll', setActiveLink);
 window.addEventListener('load', setActiveLink);
 
-// ===== Scroll reveal with IntersectionObserver =====
+/* ===== Scroll reveal with IntersectionObserver ===== */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -70,7 +70,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
 
-// ===== Animated counters for .count elements =====
+/* ===== Animated counters for .count elements ===== */
 const counters = document.querySelectorAll('.count');
 if (counters.length) {
   const co = new IntersectionObserver(entries => {
@@ -85,7 +85,8 @@ if (counters.length) {
 
       const tick = now => {
         const p = Math.min(1, (now - start) / duration);
-        const eased = p < 0.5 ? 2*p*p : -1 + (4 - 2*p)*p; // easeInOutQuad
+        // easeInOutQuad
+        const eased = p < 0.5 ? 2*p*p : -1 + (4 - 2*p)*p;
         const val = Math.round(startVal + (target - startVal) * eased);
         el.textContent = val.toString();
         if (p < 1 && duration) requestAnimationFrame(tick);
@@ -98,7 +99,7 @@ if (counters.length) {
   counters.forEach(c => co.observe(c));
 }
 
-// ===== Gentle hero parallax (image rises slightly) =====
+/* ===== Gentle hero parallax (image rises slightly) ===== */
 const heroImg = document.querySelector('.hero__img');
 let ticking = false;
 const parallax = () => {
