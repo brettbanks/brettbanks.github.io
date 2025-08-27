@@ -156,7 +156,7 @@ img{ max-width:100%; display:block }
   background: var(--bg);
 }
 .hero--image{
-  background-image: url("assets/img/project-wireshark.jpg");
+  background-image: url("assets/img/hero-bg.jpg");
   background-size: cover;
   background-position: center;
 }
