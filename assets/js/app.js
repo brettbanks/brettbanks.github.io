@@ -127,7 +127,7 @@ document.addEventListener('scroll', () => {
   }
 });
 
-/* ---------- Preload heavy background for smoother hero ---------- */
+/* ---------- Preload hero background for smoother paint ---------- */
 (() => {
   const hero = document.querySelector('.hero--image');
   if (!hero) return;
@@ -136,6 +136,5 @@ document.addEventListener('scroll', () => {
   if (!url || url === 'none') return;
   const img = new Image();
   img.src = url;
-  // Add a class when ready to fade in—CSS can use .hero--image.ready if desired
   img.onload = () => hero.classList.add('ready');
 })();
