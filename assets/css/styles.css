@@ -137,41 +137,28 @@ a:not(.btn):not(.nav__link):hover{ background-size: 100% 1px; }
   border-radius: 10px;
 }
 
-/* ---- Buttons ---- */
-.btn{
-  display:inline-block; border-radius: 10px; padding:12px 18px; font-weight:600;
-  text-decoration:none; border:1px solid var(--line); color:var(--text); background: var(--surface);
-  transition: transform .08s ease, background .2s ease, color .2s ease, border-color .2s ease;
-}
+/* Subtle, enterprise-grade buttons */
+.btn{ border-radius: 10px; padding:12px 18px; font-weight:600; }
 .btn--primary{
-  background: linear-gradient(135deg, #447cff, #66a1ff);
-  color:#0b1320; border-color: transparent;
-  box-shadow: 0 10px 26px rgba(68,124,255,.28);
+  background: #2f66f1;                 /* solid brand blue */
+  color:#0b1320; border: 0;
+  box-shadow: 0 6px 18px rgba(47,102,241,.22);
 }
-.btn--primary:hover{ filter: brightness(1.08); }
-.btn--ghost{ background: transparent }
+.btn--primary:hover{ filter: brightness(1.06); }
+.btn--ghost{ background: transparent; border:1px solid var(--line) }
 .btn--ghost:hover{ border-color: var(--link); color: var(--link) }
-.btn--mini{
-  padding: 9px 12px; border-radius: 8px;
-  background: linear-gradient(135deg, #447cff, #66a1ff);
-  color:#0b1320; border:0;
-}
-.btn:active, .btn--mini:active{ transform: translateY(1px) }
+
 
 /* ---- Hero (with background image & overlay) ---- */
-.hero{ position: relative; background: var(--bg); }
 .hero--image{
-  background-image: url("assets/img/project-wireshark.jpg"); /* you own this file */
-  background-size: cover;
-  background-position: center 35%;
+  background-position: center 32%; /* lift */
 }
 .hero__overlay{
-  position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(10,14,20,.2), rgba(10,14,20,.7)),
-    linear-gradient(120deg, rgba(59,130,246,.18), rgba(0,0,0,0) 45%);
-  pointer-events:none;
+    linear-gradient(180deg, rgba(10,14,20,.22), rgba(10,14,20,.72)),
+    radial-gradient(1200px 300px at 10% -10%, rgba(59,130,246,.12), transparent 60%);
 }
+
 .hero__container{
   position: relative; /* above overlay */
   display:grid; grid-template-columns: 1.1fr .9fr; gap:38px; align-items:center;
@@ -256,16 +243,12 @@ a:not(.btn):not(.nav__link):hover{ background-size: 100% 1px; }
 .card__title i{ color: var(--link) }
 .card__desc{ color: var(--muted); margin: 0 }
 
-/* Project top banner (correct layering + subtle overlay) */
+/* Project top banner (JS injects background-image) */
 .card__banner{
   position: relative;
   background-color: var(--surface-2);
-  background-image:
-    var(--banner),                                   /* project-specific photo from inline style */
-    radial-gradient(ellipse at top left, rgba(90,162,255,.28), transparent 55%),
-    radial-gradient(ellipse at bottom right, rgba(32,64,128,.38), transparent 50%);
-  background-size: cover, auto, auto;
-  background-position: center, top left, bottom right;
+  background-size: cover;
+  background-position: center;
   height: 140px;
   border-radius: 12px;
   margin-bottom: 14px;
@@ -274,9 +257,10 @@ a:not(.btn):not(.nav__link):hover{ background-size: 100% 1px; }
 }
 .card__banner::after{
   content:""; position:absolute; inset:0;
-  background: linear-gradient(0deg, rgba(0,0,0,.16), rgba(0,0,0,0));
+  background: linear-gradient(0deg, rgba(0,0,0,.18), rgba(0,0,0,0));
   pointer-events:none;
 }
+
 /* Cards keyboard focus */
 .card:focus-within{
   outline: 2px solid var(--link);
