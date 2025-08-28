@@ -1,117 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brett Banks | Lab Engineer & Security Consultant</title>
-
-  <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brett Banks Portfolio</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css">
 </head>
 <body>
-  <!-- ==================== HERO ==================== -->
-  <header class="hero" id="home">
-    <div class="hero__overlay">
-      <span class="hero__monogram">BB</span>
-    </div>
+
+  <!-- Hero -->
+  <section class="hero">
     <div class="container hero__inner">
-      <div class="hero__content">
-        <h1 class="hero__title">Brett Banks</h1>
-        <p class="hero__tagline">Lab Engineer • Security Consultant • Application Administrator</p>
-        <p class="hero__desc">
-          Building enterprise labs, secure systems, and automation that mirror real-world IT operations and SOC workflows.
-        </p>
-      </div>
-
-      <!-- Headshot -->
-      <div class="hero__badge">
-        <img src="assets/img/profile.jpg" alt="Portrait of Brett Banks" class="hero__badge-img" />
-      </div>
-
-      <!-- Hamburger Menu -->
-      <button class="nav__toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
-        <span class="nav__bar"></span>
-        <span class="nav__bar"></span>
-        <span class="nav__bar"></span>
-      </button>
-
-      <!-- Nav Drawer -->
-      <nav id="site-nav" class="nav__drawer">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#about">About / Contact</a></li>
-        </ul>
-      </nav>
+      <h1 class="hero__title">BRETT BANKS</h1>
+      <p class="hero__tagline">Lab Engineer | Security Consultant | Application Administrator</p>
+      <p class="hero__desc">
+        Building enterprise labs, secure systems, and automation that mirror real-world IT operations and SOC workflows.
+      </p>
     </div>
-  </header>
+  </section>
 
-  <!-- ==================== PORTFOLIO ==================== -->
-  <main>
-    <section id="portfolio" class="section portfolio">
-      <div class="container">
-        <h2 class="section__title">Featured <span>Portfolio</span></h2>
-        <div class="portfolio__grid">
-          <!-- Project 1 -->
-          <article class="portfolio__card">
-            <img src="assets/img/project-apps-lab.jpg" alt="Enterprise Apps Lab" class="portfolio__img">
-            <h3 class="portfolio__name">Enterprise Apps Lab</h3>
-          </article>
-          <!-- Project 2 -->
-          <article class="portfolio__card">
-            <img src="assets/img/project-soc.jpg" alt="SOC Workflow Simulation" class="portfolio__img">
-            <h3 class="portfolio__name">SOC Workflow Simulation</h3>
-          </article>
-          <!-- Project 3 -->
-          <article class="portfolio__card">
-            <img src="assets/img/project-wireshark.jpg" alt="Wireshark Case Study" class="portfolio__img">
-            <h3 class="portfolio__name">Wireshark Case Study</h3>
-          </article>
-          <!-- Project 4 -->
-          <article class="portfolio__card">
-            <img src="assets/img/project-automation.jpg" alt="Python Log Parser" class="portfolio__img">
-            <h3 class="portfolio__name">Python Log Parser</h3>
-          </article>
-        </div>
+  <!-- Portfolio -->
+  <section class="portfolio">
+    <h2 class="section__title">PORTFOLIO</h2>
+    <div class="portfolio__grid">
+      <div class="portfolio__card">
+        <img src="assets/img/project1.jpg" alt="">
+        <h3>Beal & Harlow Outreach</h3>
+        <p>2030</p>
       </div>
-    </section>
-
-    <!-- ==================== ABOUT / CONTACT ==================== -->
-    <section id="about" class="section about">
-      <div class="container about__grid">
-        <div class="about__left">
-          <h2 class="section__title">About Me</h2>
-          <p>
-            I’m Brett Banks, an engineer passionate about building secure, resilient systems.  
-            My work blends lab design, SOC simulation, and automation to strengthen IT and cybersecurity operations.
-          </p>
-        </div>
-        <div class="about__right">
-          <form class="contact__form" action="https://formspree.io/f/mayvlzno" method="POST">
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter your email" required />
-            <button type="submit" class="btn btn--primary">Send</button>
-          </form>
-          <div class="socials">
-            <a href="https://linkedin.com/in/brettbanks1" class="socials__link" aria-label="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
-            <a href="https://github.com/brettbanks" class="socials__link" aria-label="GitHub"><i class="ri-github-fill"></i></a>
-            <a href="mailto:brettcbanks@proton.me" class="socials__link" aria-label="Email"><i class="ri-mail-fill"></i></a>
-          </div>
-        </div>
+      <div class="portfolio__card">
+        <img src="assets/img/project2.jpg" alt="">
+        <h3>Sierralane Teaching Program</h3>
+        <p>2030</p>
       </div>
-    </section>
-  </main>
+      <!-- Add more cards -->
+    </div>
+  </section>
 
-  <!-- ==================== FOOTER ==================== -->
+  <!-- Blog -->
+  <section class="blog">
+    <h2 class="section__title">BLOG</h2>
+    <div class="blog__entry">
+      <p class="blog__year">2030</p>
+      <div>
+        <h3>Teacher Trainee</h3>
+        <p class="muted">Langtown High School</p>
+        <p>Explain the responsibilities you had in this role...</p>
+      </div>
+    </div>
+    <div class="blog__entry">
+      <p class="blog__year">2028</p>
+      <div>
+        <h3>Training Intern</h3>
+        <p class="muted">Lernerra High</p>
+        <p>Explain the responsibilities you had in this role...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <footer class="footer">
-    <p>© 2025 Brett Banks. All Rights Reserved.</p>
+    <div class="container">
+      <h2>CONNECT WITH ME</h2>
+      <p><strong>Brett Banks</strong><br>
+      brettcbanks@proton.me<br>
+      +925-817-8567</p>
+      <div class="socials">
+        <a href="#"><i class="ri-instagram-line"></i></a>
+        <a href="#"><i class="ri-twitter-line"></i></a>
+        <a href="#"><i class="ri-facebook-line"></i></a>
+        <a href="#"><i class="ri-linkedin-box-fill"></i></a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="assets/js/app.js"></script>
 </body>
 </html>
