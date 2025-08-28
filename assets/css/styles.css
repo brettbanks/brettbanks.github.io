@@ -1,112 +1,53 @@
-:root {
-  --bg: #000;
-  --text: #111;
-  --white: #fff;
-  --muted: #666;
-  --container: 1100px;
+/* === Monochrome overrides & hero polish === */
+:root{
+  --bg:#000; --text:#fff; --muted:#9a9a9a; --accent:#fff;  /* no color */
 }
 
-body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  margin: 0; padding: 0;
-  line-height: 1.6;
-  color: var(--text);
+/* Hero: large, airy, centered; remove blue */
+.hero{ min-height:88vh; text-align:center; }
+.hero__title{
+  font-size:clamp(2.8rem,6.2vw,4.6rem);
+  font-weight:800; letter-spacing:.28rem; text-transform:uppercase;
+  margin:0 0 16px;
 }
+.hero__tagline{ color:var(--text); font-weight:600; margin:0 0 10px; }
+.hero__desc{ color:#bdbdbd; font-style:italic; max-width:72ch; margin:6px auto 0; }
 
-.container {
-  width: min(var(--container), 92%);
-  margin-inline: auto;
-}
+/* Headshot & hamburger: smaller, higher, cleaner */
+.hero__badge{ top:3.2%; right:4.2%; width:84px; height:84px; border:2px solid #222; }
+.nav__toggle{ top:1.6%; right:4.2%; }
+.nav__bar{ background:#fff; height:2px }
 
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-}
-.hero__title {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-}
-.hero__tagline {
-  font-weight: 600;
-  margin-top: 10px;
-}
-.hero__desc {
-  color: var(--muted);
-  margin-top: 10px;
-  font-style: italic;
-}
+/* Thin separators like the reference */
+.section{ padding:84px 0; }
+.section--divider{ border-top:1px solid #2b2b2b; }
 
-/* Portfolio */
-.portfolio {
-  background: var(--bg);
-  color: var(--white);
-  padding: 60px 20px;
-  text-align: center;
+/* Portfolio: dotted backdrop, 3-up at desktop, image on top, white text only */
+.portfolio{
+  background:#000 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><circle cx='1' cy='1' r='1' fill='%23242424'/></svg>") repeat;
+  background-size:40px 40px;
+  color:#fff; text-align:center;
 }
-.portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+.section__title{ letter-spacing:.18rem; }
+.portfolio__grid{
+  display:grid; gap:28px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 }
-.portfolio__card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 8px;
-  overflow: hidden;
+@media (min-width:1024px){
+  .portfolio__grid{ grid-template-columns:repeat(3,1fr); } /* force 3 across on desktop */
 }
-.portfolio__card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
+.portfolio__card{
+  background:#111; border:1px solid #232323; border-radius:10px; overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-.portfolio__card h3 {
-  margin: 12px 0 4px;
-}
-.portfolio__card p {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
+.portfolio__card:hover{ transform:translateY(-6px); box-shadow:0 14px 26px rgba(0,0,0,.45); }
+.portfolio__img{ width:100%; height:200px; object-fit:cover; display:block; }
+.portfolio__name{ margin:12px 12px 14px; font-weight:600; }
 
-/* Blog */
-.blog {
-  padding: 60px 20px;
-}
-.blog__entry {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 24px;
-}
-.blog__year {
-  font-weight: bold;
-  min-width: 60px;
-}
-.blog__entry .muted {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/* Footer */
-.footer {
-  background: var(--bg);
-  color: var(--white);
-  padding: 40px 20px;
-  text-align: center;
-}
-.socials {
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-.socials a {
-  color: var(--white);
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-.socials a:hover {
-  color: var(--muted);
-}
+/* About/Contact: left text / right email row, icons monochrome */
+.about__grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:40px; }
+@media (max-width:860px){ .about__grid{ grid-template-columns:1fr; } }
+.contact__form input{ background:#0f0f0f; color:#fff; border:1px solid #2a2a2a; }
+.btn--primary{ background:#fff; color:#000; }
+.socials__link{ color:#cfcfcf; }
+.socials__link:hover{ color:#fff; }
