@@ -1,8 +1,3 @@
-/* ======================= */
-/*   Minimalist Portfolio  */
-/*   Brett Banks           */
-/* ======================= */
-
 :root{
   --bg: #000;
   --text: #fff;
@@ -21,7 +16,6 @@ body{
   line-height:1.6;
 }
 
-/* Container */
 .container{ width:min(var(--container),92%); margin-inline:auto }
 
 /* HERO */
@@ -37,12 +31,9 @@ body{
   z-index:0;
 }
 .hero__monogram{
-  font-size:20rem;
-  font-weight:800;
-  color:#fff;
-  opacity:0.03;
-  pointer-events:none;
-  user-select:none;
+  font-size:20rem; font-weight:800;
+  color:#fff; opacity:0.03;
+  pointer-events:none; user-select:none;
 }
 .hero__inner{ position:relative; z-index:1; width:100% }
 .hero__content{ max-width:700px; margin-inline:auto }
@@ -52,19 +43,15 @@ body{
 
 /* Headshot */
 .hero__badge{
-  position:absolute;
-  top:5%; right:5%;
-  width:120px; height:120px;
-  border-radius:50%; overflow:hidden;
+  position:absolute; top:5%; right:5%;
+  width:120px; height:120px; border-radius:50%; overflow:hidden;
 }
 .hero__badge-img{ width:100%; height:100%; object-fit:cover; filter:grayscale(100%) }
 
 /* Hamburger */
 .nav__toggle{
-  position:absolute;
-  top:2%; right:5%;
-  width:36px; height:28px;
-  background:none; border:0; cursor:pointer;
+  position:absolute; top:2%; right:5%;
+  width:36px; height:28px; background:none; border:0; cursor:pointer;
   display:flex; flex-direction:column; justify-content:space-between;
   z-index:10;
 }
@@ -73,8 +60,7 @@ body{
 /* Drawer */
 .nav__drawer{
   position:fixed; top:0; right:-100%; height:100%; width:220px;
-  background:#111; padding:60px 20px;
-  transition:right .3s ease; z-index:9;
+  background:#111; padding:60px 20px; transition:right .3s ease; z-index:9;
 }
 .nav__drawer ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:20px }
 .nav__drawer a{ color:var(--text); text-decoration:none; font-weight:600 }
@@ -84,7 +70,36 @@ body{
 /* Sections */
 .section{ padding:80px 0 }
 .section__title{ font-size:1.8rem; margin:0 0 16px }
+.section__title span{ color:var(--accent) }
 .section__intro{ color:var(--muted); max-width:60ch }
+
+/* PORTFOLIO */
+.portfolio{
+  background:#0b0b0b url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><rect width='1' height='1' fill='%23222222'/></svg>") repeat;
+  background-size:40px 40px;
+  text-align:center;
+}
+.portfolio__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:28px;
+}
+.portfolio__card{
+  background:#111; border:1px solid #222; border-radius:12px;
+  overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.3);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.portfolio__card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 26px rgba(0,0,0,0.45);
+}
+.portfolio__img{
+  width:100%; height:200px; object-fit:cover; display:block;
+}
+.portfolio__name{
+  padding:14px; margin:0;
+  font-size:1.05rem; font-weight:600; color:var(--text);
+}
 
 /* ABOUT / CONTACT */
 .about__grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px }
